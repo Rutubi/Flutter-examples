@@ -21,6 +21,13 @@ jobs:
           flutter-version: '3.27.0'
           channel: 'stable'
       
+      - run: |
+          echo "distributionBase=GRADLE_USER_HOME" > android/gradle/wrapper/gradle-wrapper.properties
+          echo "distributionPath=wrapper/dists" >> android/gradle/wrapper/gradle-wrapper.properties
+          echo "distributionUrl=https\://services.gradle.org/distributions/gradle-7.6.3-all.zip" >> android/gradle/wrapper/gradle-wrapper.properties
+          echo "zipStoreBase=GRADLE_USER_HOME" >> android/gradle/wrapper/gradle-wrapper.properties
+          echo "zipStorePath=wrapper/dists" >> android/gradle/wrapper/gradle-wrapper.properties
+      
       - run: flutter pub get
       - run: flutter build apk --release --android-skip-build-dependency-validation
       
