@@ -21,6 +21,11 @@ jobs:
           flutter-version: '3.27.0'
           channel: 'stable'
       
+      - run: |
+          sed -i 's/gradle-.*-all.zip/gradle-7.6.3-all.zip/' android/gradle/wrapper/gradle-wrapper.properties
+          sed -i 's/compileSdkVersion .*/compileSdkVersion 34/' android/app/build.gradle
+          sed -i 's/targetSdkVersion .*/targetSdkVersion 34/' android/app/build.gradle
+      
       - run: flutter pub get
       - run: flutter build apk --release
       
